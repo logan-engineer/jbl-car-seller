@@ -1,0 +1,14 @@
+﻿@model Car
+
+@{
+    ViewData["Title"] = "Add Cart";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Are you sure you want to Add Wish List "@Model.Make"?</p>
+<form asp-action="AddToWishList" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Add To Wish List</button>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>
+</form>

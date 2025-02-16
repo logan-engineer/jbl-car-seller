@@ -1,0 +1,36 @@
+﻿@model Car
+<div class="mt-5">
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Car Details";
+}</div>
+<h2>@Model.Make @Model.Model (@Model.Year)</h2>
+
+<div class="card w-25 shadow" style="margin:100px 500px">
+    <div class="card-header">
+        <h5 class="card-title">Car Details</h5>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Make</dt>
+            <dd class="col-sm-9">@Model.Make</dd>
+
+            <dt class="col-sm-3">Model</dt>
+            <dd class="col-sm-9">@Model.Model</dd>
+
+            <dt class="col-sm-3">Year</dt>
+            <dd class="col-sm-9">@Model.Year</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9">@Model.Price.ToString("C")</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+        </dl>
+
+        <a href="@Url.Action("Index", "Car")" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+
+

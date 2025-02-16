@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - jpl_car_seller</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/jpl_car_seller.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/Home/Index">
+                <i class="bi bi-house-door "></i><span class="d-none d-sm-inline ms-2">Home</span>
+            </a>
+           
+                    <partial name="_LoginPartial" />
+              
+               
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/Dashboard/Index">
+                                <i class="bi bi-speedometer "></i><span class="d-none d-sm-inline ms-2">Dasboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/Order/Create">
+                                <i class="bi bi-cash-coin"></i><span class="d-none d-sm-inline ms-2">order</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/Car/Index">
+                                <i class="bi bi-car-front-fill"></i><span class="d-none d-sm-inline ms-2">product</span>
+                            </a>
+                           
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/CarImage/Index">
+                                <i class="bi bi-card-image"></i><span class="d-none d-sm-inline ms-2">product Image</span>
+                            </a>
+
+                        </li>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/Category/Index">
+                                <i class="bi bi-boxes"></i><span class="d-none d-sm-inline ms-2">Catagory</span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/User/Index">
+                                <i class="bi bi-person"></i><span class="d-none d-sm-inline ms-2">customer</span>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="white-space:nowrap" href="/Inventory/Index">
+                                <i class="bi bi-bag"></i><span class="d-none d-sm-inline ms-2">Inventory</span>
+                            </a>
+
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-Controller="Admin" asp-action="Index">Admin</a>
+                        </li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    @* <div class="container-fluid">
+        <div class="row">
+            
+            <div class="col-2 col-sm-3 col-xl-2 bg-dark" style="height:100vh">
+                <div class="">
+                    <nav class="navbar bg-dark border-bottom border-white mb-3" data-bs-theme="dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="/Home/Index">
+                                <i class="bi bi-house-door "></i><span class="d-none d-sm-inline ms-2">Home</span>
+                            </a>
+                        </div>
+                    </nav>
+                    <nav class="nav flex-column  navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 ">
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/Dashboard/Index">
+                            <i class="bi bi-speedometer "></i><span class="d-none d-sm-inline ms-2">Dasboard</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/Order/Create">
+                            <i class="bi bi-cash-coin"></i><span class="d-none d-sm-inline ms-2">order</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/Car/Index">
+                            <i class="bi bi-grid"></i><span class="d-none d-sm-inline ms-2">product</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/CarImage/Index">
+                            <i class="bi bi-picture"></i><span class="d-none d-sm-inline ms-2">product Image</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/Category/Index">
+                            <i class="bi bi-boxes"></i><span class="d-none d-sm-inline ms-2">Catagory</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/User/Index">
+                            <i class="bi bi-person"></i><span class="d-none d-sm-inline ms-2">customer</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/Inventory/Index">
+                            <i class="bi bi-bag"></i><span class="d-none d-sm-inline ms-2">Inventory</span>
+                        </a>
+                        <a class="nav-link text-white" style="white-space:nowrap" href="/WishList/Index">
+                            <i class="bi bi-clipboard2-check"></i><span class="d-none d-sm-inline ms-2">Wishlist</span>
+                        </a>
+                       
+
+                    </nav>
+              </div>
+            </div>
+            <!-- Main Content Area -->
+            <div class="col-10 col-sm-9 col-xl-10 p-0 my-0">
+
+                <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <partial name="_LoginPartial" />
+                            </li>
+                            </ul>
+                    </div>
+                </nav>
+
+
+
+                   
+
+                
+
+               
+            </div>
+        </div>
+    </div> *@
+
+    <div class="container-fluid m-5 p-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

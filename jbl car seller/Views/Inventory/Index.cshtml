@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Inventory>
+
+@{
+    ViewData["Title"] = "Inventory Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Inventory List</h2>
+    <a href="@Url.Action("Create", "Inventory")" class="btn btn-primary">Add New Car</a>
+    <table class="table table-bordered text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Car</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var inventory in Model)
+            {
+                <tr>
+                    <td>@inventory.Id</td>
+                    <td>@inventory.Car.Id</td> <!-- Display Car Name, you can change this to any property from the Car object -->
+                    <td>@inventory.Stock</td>
+                    <td>
+                        <a href="@Url.Action("UpdateStock", new { id = inventory.CarId })" class="btn btn-warning btn-sm">Update Stock</a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

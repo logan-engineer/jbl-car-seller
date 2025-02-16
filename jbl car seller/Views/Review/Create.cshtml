@@ -1,0 +1,61 @@
+﻿@model Review  
+
+@{
+    ViewData["Title"] = "Create Review";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Create Review for Car</h1>
+
+    <!-- Review Creation Form -->
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <!-- Rating Field -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Rating">Rating (1-5)</label>
+                    <input type="number" class="form-control" id="Rating" name="Rating" min="1" max="5" value="@Model.Rating" required />
+                    @if (!string.IsNullOrEmpty(ViewData["RatingError"]?.ToString()))
+                    {
+                        <small class="text-danger">@ViewData["RatingError"]</small>
+                    }
+                </div>
+            </div>
+
+            <!-- Comment Field -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Comment">Comment</label>
+                    <textarea class="form-control" id="Comment" name="Comment" rows="4" required>@Model.Comment</textarea>
+                </div>
+            </div>
+
+            <!-- Car ID (Hidden) -->
+            <input type="hidden" name="CarId" value="@Model.CarId" />
+
+            <div class="col-md-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Display validation errors if any -->
+  @*   @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger mt-3">
+            <strong>There were some errors with your submission:</strong>
+            <ul>
+                @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    } *@
+</div>
+
+
+

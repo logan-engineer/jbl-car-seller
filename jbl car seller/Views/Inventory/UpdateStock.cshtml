@@ -1,0 +1,40 @@
+﻿@model Inventory 
+
+@{
+    ViewData["Title"] = "Edit Inventory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2>Edit Inventory</h2>
+
+    <!-- Display validation errors if any -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Begin form -->
+    <form asp-action="UpdateStock" method="post" class="needs-validation">
+        <div class="form-group">
+            <label for="@Model.Car.Id">Car</label>
+            <input asp-for="@Model.Car.Id" class="form-control"  min="0" readonly />
+           
+        </div>
+
+        <div class="form-group">
+            <label for="@Model.Stock">Stock Quantity</label>
+            <input asp-for="@Model.Stock" class="form-control" type="number" min="0" required />
+            <span asp-validation-for="@Model.Stock" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-3">
+            
+            <button type="submit" class="btn btn-primary">Update Inventory</button>
+            <a href="@Url.Action("Index", "Inventory")" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<!-- Include validation scripts -->
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Car>
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Car List";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 text-center">
+            <h2>@ViewData["Title"]</h2>
+        </div>
+        <div class="col-4 text-end">
+            <a href="@Url.Action("Create", "Car")" class="btn btn-primary">Add New Car</a>
+        </div>
+    </div>
+    
+    
+    <!-- Table to display car information -->
+    <table class="table table-striped table-bordered rounded-3 text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Make</th>
+               
+                <th>Year</th>
+                <th>Price</th>
+                
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Id</td>
+                    <td>@car.Make</td>
+                  
+                    <td>@car.Year</td>
+                    <td>@car.Price.ToString("C")</td> <!-- Formats price as currency -->
+                   
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = car.Id })" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="@Url.Action("Details", new { id = car.Id })" class="btn btn-info btn-sm">Details</a>
+                        
+                        <a href="@Url.Action("Delete", new { id = car.Id })" onclick="return confirm('Are you sure you want to delete this car?')" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+  
+   
+</div>
+

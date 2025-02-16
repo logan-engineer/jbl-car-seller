@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CarImage>
+
+@{
+    ViewData["Title"] = "Car Image List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Car Image List</h1>
+
+    <div class="text-end mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New Category</a>
+    </div>
+
+    <table class="table text-center table-striped table-bordered shadow rounded-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Car Id</th>
+                <th>Car Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var carimage in Model)
+            {
+                <tr>
+                    <td>@carimage.CarId</td>
+                    <td><img src="@carimage.ImageUrl" /></td>
+                    <td>
+                        <!-- Edit Button -->
+                        <a href="@Url.Action("Edit", new { id = carimage.CarImageId })" class="btn btn-warning btn-sm">Edit</a>
+
+                        <!-- Delete Form -->
+                        <form asp-action="Delete" asp-route-id="@carimage.CarImageId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

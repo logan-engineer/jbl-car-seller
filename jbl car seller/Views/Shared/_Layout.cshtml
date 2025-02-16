@@ -1,0 +1,168 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - jbl_car_seller</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/jbl_car_seller.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary p-3">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/car_1634207.png" width="30px" /> JBL CAR SELLER</a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                   
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"  href="#footer" >About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="WishList" asp-action="Index">Wish List</a>
+						</li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-Controller="Admin" asp-action="Index">Admin</a>
+                        </li>
+                    </ul>
+                   
+                </div>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
+ 
+    </header>
+   <div class="container-fluid" style="margin-top:75px">
+		@RenderBody()
+   </div>
+           
+        
+
+   
+       
+		<footer class="text-center text-lg-start text-white"
+				style="background-color: #45526e">
+			<!-- Grid container -->
+			<div id="footer" class="container-fluid p-4 pb-0">
+				<!-- Section: Links -->
+				<section class="">
+					<!--Grid row-->
+					<div class="row">
+						<!-- Grid column -->
+						<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+							<h4 class="text-uppercase mb-4 font-weight-bold">
+								JPL Car Seller 
+
+							</h4>
+							<h5>About</h5>
+							<p>
+							Welcome to JPL Car Selling App, your trusted partner in buying and selling cars! Whether you're looking to purchase a brand-new vehicle, sell your old car, or explore a wide range of pre-owned options, JPL Car Selling App is here to make the process smooth, easy, and hassle-free.
+
+							At JPL, we understand that buying or selling a car is an important decision that requires careful consideration. Our goal is to provide you with a platform that is not only user-friendly but also secure and reliable. With a vast inventory, competitive prices, and the convenience of online browsing, we’re redefining the way cars are bought and sold.
+							</p>
+						</div>
+						<!-- Grid column -->
+
+						<hr class="w-100 clearfix d-md-none" />
+
+						<!-- Grid column -->
+						
+						<!-- Grid column -->
+
+						<hr class="w-100 clearfix d-md-none" />
+
+						<!-- Grid column -->
+						<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">
+								Useful links
+							</h6>
+							<p>
+								<a href="#" class="text-white">Your Account</a>
+							</p>
+							<p>
+								<a href="#" class="text-white">Contact</a>
+							</p>
+							<p>
+							<a href="#" class="text-white">Shipping page</a>
+							</p>
+							<p>
+							<a href="#" class="text-white">Help</a>
+							</p>
+						</div>
+
+						<!-- Grid column -->
+						<hr class="w-100 clearfix d-md-none" />
+
+						<!-- Grid column -->
+						<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+							<h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+							<p><i class="bi bi-house mr-3"></i> tamil nadu, tn 10012, india</p>
+							<p><i class="bi bi-envelope mr-3"></i> logu@gmail.com</p>
+							<p><i class="bi bi-phone mr-3"></i> + 01 234 567 88</p>
+							<p><i class="bi bi-printer mr-3"></i> + 01 234 567 89</p>
+						</div>
+						<!-- Grid column -->
+					</div>
+					<!--Grid row-->
+				</section>
+				<!-- Section: Links -->
+
+				<hr class="my-3">
+
+				<!-- Section: Copyright -->
+				<section class="p-3 pt-0">
+					<div class="row d-flex align-items-center">
+						<!-- Grid column -->
+						<div class="col-md-7 col-lg-8 text-center text-md-start">
+							<!-- Copyright -->
+							<div class="p-3">
+							
+								&copy; 2024 - jbl_car_seller - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+							
+							</div>
+							<!-- Copyright -->
+						</div>
+						<!-- Grid column -->
+						<!-- Grid column -->
+					
+						<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+							<!-- Facebook -->
+						<a type="button" class="btn btn-floating btn-warning btn-lg p-1"><i class="bi bi-facebook"></i></a>
+
+						
+						<a type="button" class="btn btn-floating btn-warning btn-lg p-1"><i class="bi bi-dribbble"></i></a>
+						<!-- Twitter -->
+						<a type="button" class="btn btn-floating btn-warning btn-lg p-1"><i class="bi bi-twitter"></i></a>
+						<!-- Google + -->
+						<a type="button" class="btn btn-floating btn-warning btn-lg p-1"><i class="bi bi-google"></i></a>
+						</div>
+						<!-- Grid column -->
+					</div>
+				</section>
+				<!-- Section: Copyright -->
+			</div>
+			<!-- Grid container -->
+		</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model CarImage
+
+@{
+    ViewData["Title"] = "Create Car Image";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Create New Car Image</h1>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label asp-for="CarId">Car Name</label>
+            <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+            <span asp-validation-for="CarId" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="form-label"></label>
+            <input type="file" name="files" id="uploadbox" class="form-control" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Create CarImage</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to Index</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

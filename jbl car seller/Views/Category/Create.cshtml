@@ -1,0 +1,36 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Create Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Create New Category</h1>
+
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="Name">Category Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter Category Name" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="Description">Category Description</label>
+            <textarea class="form-control" id="Description" name="Description" placeholder="Enter Description" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Create Category</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to Categories</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

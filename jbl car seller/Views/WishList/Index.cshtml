@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WishList>
+
+
+
+@{
+    ViewData["Title"] = "Your Wishlist";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<div class="container my-5">
+    <h1 class="text-center mb-4">My Wishlist</h1>
+
+    <!-- Check if wishlist is empty -->
+    @if (Model.Count()==0)
+    {
+        <div class="alert alert-warning text-center">
+            You have no items in your wishlist yet.
+        </div>
+    }
+    else
+    {
+        <!-- Table to display the wishlist -->
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Car Name</th>
+                    <th>Car Model</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Car.Make</td>
+                        <td>@item.Car.Model</td>
+                        <td>@item.Car.Price.ToString("C")</td>
+                        <td>
+                            <form method="post" action="@Url.Action("RemoveFromWishList", "WishList", new { id = item.Id })">
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- Add item to wishlist -->
+    <a href="@Url.Action("Index", "Home" )" class="btn btn-primary btn-lg d-block mx-auto">Add a New Car to Wishlist</a>
+</div>
+
+
+
+

@@ -1,0 +1,56 @@
+﻿@model Car
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+
+<h1>Car Details</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h2>@Model.Make @Model.Model (@Model.Year)</h2>
+        <div class="row">
+            <div class="col-md-6">
+                @if (Model.CarImage != null)
+                {
+                    <img src="@Model.CarImage.ImageUrl" alt="Car Image" class="img-fluid rounded" />
+                }
+                else
+                {
+                    <img src="https://via.placeholder.com/500" alt="No Image Available" class="img-fluid rounded" />
+                }
+            </div>
+
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">Make</dt>
+                    <dd class="col-sm-8">@Model.Make</dd>
+
+                    <dt class="col-sm-4">Model</dt>
+                    <dd class="col-sm-8">@Model.Model</dd>
+
+                    <dt class="col-sm-4">Year</dt>
+                    <dd class="col-sm-8">@Model.Year</dd>
+
+                    <dt class="col-sm-4">Price</dt>
+                    <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                    <dt class="col-sm-4">Description</dt>
+                    <dd class="col-sm-8">@Model.Description</dd>
+                </dl>
+
+                <!-- Add to Cart Button -->
+                <form asp-action="AddToCart" method="post">
+                    <input type="hidden" name="carId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-success btn-lg">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Back to List Button -->
+<div>
+    <a href="@Url.Action("AddToWishList", "WishList", new { id=Model.Id })" class="btn btn-primary">Add to WishList</a>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to List</a>
+</div>

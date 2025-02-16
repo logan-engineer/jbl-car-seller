@@ -1,0 +1,94 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "Create Order";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="account-container">
+    <div class="account-box">
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label for="CarId">Car</label>
+                <select asp-for="CarId" class="form-control" id="CarId">
+                    <option value="">Select a Car</option> 
+                    @foreach (var car in ViewBag.CarList as List<SelectListItem>)
+                    {
+                        <option value="@car.Value">@car.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="CarId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="UserId">User</label>
+                <select asp-for="UserId" class="form-control" id="UserId">
+                    <option value="">-- Select User --</option> 
+                    @foreach (var user in ViewBag.UserList as List<SelectListItem>)
+                    {
+                        <option value="@user.Value">@user.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="OrderDate">Order Date</label>
+                <input asp-for="OrderDate" class="form-control" type="datetime-local" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Amount">Amount</label>
+                <input asp-for="Amount" class="form-control" type="number" step="0.01" min="1" id="Amount" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="PaymentStatus">Payment Status</label>
+                <select asp-for="PaymentStatus" class="form-control" >
+                    <option value="">-- Select User --</option>
+                    @foreach (var pay in ViewBag.List as List<string>)
+                    {
+                        <option>@pay</option>
+                    }
+                </select>
+                <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Order</button>
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+         <script>
+        // Get car prices from ViewData
+        var carPrices = @Html.Raw(Json.Serialize(ViewData["CarPrices"]));
+
+        // Event listener for changes in CarId select
+        document.getElementById('CarId').addEventListener('change', function() {
+            var carId = this.value;
+            var amountInput = document.getElementById('Amount');
+
+            if (carId && carPrices[carId]) {
+                // Set the Amount field to the price of the selected car
+                amountInput.value = carPrices[carId].toFixed(2);
+            } else {
+                // Clear the Amount field if no car is selected
+                amountInput.value = '';
+            }
+        });
+    </script>
+    }
+}
+

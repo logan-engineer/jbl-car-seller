@@ -1,0 +1,53 @@
+﻿@model DashboardViewModel  
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <!-- Car Count Card -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Car Count</h5>
+                    <p class="card-text">@Model.CarCount</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Count Card -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Order Count</h5>
+                    <p class="card-text">@Model.OrderCount</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Count Card -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Review Count</h5>
+                    <p class="card-text">@Model.ReviewCount</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Count Card -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Category Count</h5>
+                    <p class="card-text">@Model.CategoryCount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
